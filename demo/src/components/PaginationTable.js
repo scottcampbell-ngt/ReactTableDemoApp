@@ -34,6 +34,8 @@ const PaginatedTable = () => {
 		previousPage,
 		canPreviousPage,
 		pageOptions,
+		gotoPage,
+		pageCount,
 		setGlobalFilter,
 		state,
 	} = useTable(
@@ -93,12 +95,32 @@ const PaginatedTable = () => {
 					Page <strong>{pageIndex + 1}</strong> of{' '}
 					<strong>{pageOptions.length}</strong>
 				</span>
+				<button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+					{'<<'}
+				</button>
 				<button onClick={() => previousPage()} disabled={!canPreviousPage}>
 					Prev
 				</button>
 				<button onClick={() => nextPage()} disabled={!canNextPage}>
 					Next
 				</button>
+				<button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+					{'>>'}
+				</button>
+				<p>
+					Go to page:{' '}
+					<input
+						type="number"
+						defaultValue={pageIndex + 1}
+						onChange={(e) => {
+							const page = e.target.value ? Number(e.target.value) - 1 : 0;
+							gotoPage(page);
+						}}
+						style={{
+							width: '50px',
+						}}
+					/>
+				</p>
 			</div>
 		</>
 	);
