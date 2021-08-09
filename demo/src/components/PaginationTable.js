@@ -1,12 +1,18 @@
 import React, { useMemo } from 'react';
-import { useTable, useSortBy, useFilters, useGlobalFilter } from 'react-table';
+import {
+	useTable,
+	useSortBy,
+	useFilters,
+	useGlobalFilter,
+	usePagination,
+} from 'react-table';
 import DATA from '../data.json';
 import { COLUMNS, GROUPED_COLS } from './columns';
 import GlobalFilter from './GlobalFilter';
 //import ColumnFilter from './ColumnFilter';
 import './table.css';
 
-const FilteringTable = () => {
+const PaginatedTable = () => {
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => DATA, []);
 
@@ -21,11 +27,15 @@ const FilteringTable = () => {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		footerGroups,
-		rows,
 		prepareRow,
-		state,
+		page,
+		nextPage,
+		canNextPage,
+		previousPage,
+		canPreviousPage,
+		pageOptions,
 		setGlobalFilter,
+		state,
 	} = useTable(
 		{
 			columns,
@@ -34,10 +44,11 @@ const FilteringTable = () => {
 		},
 		useFilters,
 		useGlobalFilter,
-		useSortBy
+		useSortBy,
+		usePagination
 	);
 
-	const { globalFilter } = state;
+	const { globalFilter, pageIndex } = state;
 
 	return (
 		<>
@@ -63,7 +74,7 @@ const FilteringTable = () => {
 					))}
 				</thead>
 				<tbody {...getTableBodyProps()}>
-					{rows.map((row) => {
+					{page.map((row) => {
 						prepareRow(row);
 						return (
 							<tr {...row.getRowProps()}>
@@ -76,18 +87,21 @@ const FilteringTable = () => {
 						);
 					})}
 				</tbody>
-				<tfoot>
-					{footerGroups.map((footerGroup) => (
-						<tr {...footerGroup.getFooterGroupProps()}>
-							{footerGroup.headers.map((column) => (
-								<td {...column.getFooterProps()}>{column.render('Footer')}</td>
-							))}
-						</tr>
-					))}
-				</tfoot>
 			</table>
+			<div>
+				<span>
+					Page <strong>{pageIndex + 1}</strong> of{' '}
+					<strong>{pageOptions.length}</strong>
+				</span>
+				<button onClick={() => previousPage()} disabled={!canPreviousPage}>
+					Prev
+				</button>
+				<button onClick={() => nextPage()} disabled={!canNextPage}>
+					Next
+				</button>
+			</div>
 		</>
 	);
 };
 
-export default FilteringTable;
+export default PaginatedTable;
