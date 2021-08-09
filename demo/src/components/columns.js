@@ -1,3 +1,5 @@
+//import { format } from 'date-fns';
+
 export const COLUMNS = [
 	{
 		Header: 'Id',
@@ -28,6 +30,9 @@ export const COLUMNS = [
 		Header: 'Start',
 		Footer: 'Start',
 		accessor: 'start_date',
+		// Cell: ({ value }) => {
+		// 	return format(value, 'dd/MM/yyyy');
+		// },
 	},
 	{
 		Header: 'City',
