@@ -67,7 +67,8 @@ const SelectionTable = () => {
 	}, [selectedFlatRows]);
 
 	return (
-		<>
+		<div>
+			<h3>React-Table Table</h3>
 			{/* <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
 			<table {...getTableProps()}>
 				<thead>
@@ -147,7 +148,7 @@ const SelectionTable = () => {
 				</select>
 			</div>
 			<SelectedRows selectedRows={selectedRows} />
-		</>
+		</div>
 	);
 };
 

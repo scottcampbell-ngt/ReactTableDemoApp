@@ -30,6 +30,7 @@ const BlueprintTable = () => {
 
     return (
         <div>
+            <h3>Blueprint Table</h3>
             <Table2 numRows={DATA.length}>
                 {renderColumns}
             </Table2>
