@@ -1,104 +1,32 @@
-//import { format } from 'date-fns';
-import ColumnFilter from '../hooks/ColumnFilter';
-
-export const COLUMNS = [
+const COLUMNS = [
 	{
-		Header: 'Id',
-		Footer: 'Id',
-		accessor: 'id',
-		Filter: ColumnFilter,
-		disableFilters: true,
+		name: 'Id',
+		key: 'id',
 	},
 	{
-		Header: 'Company Name',
-		Footer: 'Company Name',
-		accessor: 'company_name',
-		Filter: ColumnFilter,
+		name: 'Company Name',
+		key: 'company_name',
 	},
 	{
-		Header: 'Account Holder',
-		Footer: 'Account Holder',
-		accessor: 'account_holder',
-		Filter: ColumnFilter,
+		name: 'Account Holder',
+		key: 'account_holder',
 	},
 	{
-		Header: 'Email',
-		Footer: 'Email',
-		accessor: 'email',
-		Filter: ColumnFilter,
-		disableFilters: true,
+		name: 'Email',
+		key: 'email',
 	},
 	{
-		Header: 'Phone',
-		Footer: 'Phone',
-		accessor: 'phone',
-		Filter: ColumnFilter,
-		disableFilters: true,
+		name: 'Phone',
+		key: 'phone',
 	},
 	{
-		Header: 'Start',
-		Footer: 'Start',
-		accessor: 'start_date',
-		Filter: ColumnFilter,
-		disableFilters: true,
-		// Cell: ({ value }) => {
-		// 	return format(value, 'dd/MM/yyyy');
-		// },
+		name: 'Start',
+		key: 'start_date',
 	},
 	{
-		Header: 'City',
-		Footer: 'City',
-		accessor: 'city',
-		Filter: ColumnFilter,
+		name: 'City',
+		key: 'city',
 	},
 ];
 
-export const GROUPED_COLS = [
-	{
-		Header: 'Id',
-		Footer: 'Id',
-		accessor: 'id',
-	},
-	{
-		Header: 'Contact',
-		Footer: 'Contact',
-		columns: [
-			{
-				Header: 'Company Name',
-				Footer: 'Company Name',
-				accessor: 'company_name',
-			},
-			{
-				Header: 'Account Holder',
-				Footer: 'Account Holder',
-				accessor: 'account_holder',
-			},
-			{
-				Header: 'Email',
-				Footer: 'Email',
-				accessor: 'email',
-			},
-			{
-				Header: 'Phone',
-				Footer: 'Phone',
-				accessor: 'phone',
-			},
-		],
-	},
-	{
-		Header: 'Info',
-		Footer: 'Info',
-		columns: [
-			{
-				Header: 'Start',
-				Footer: 'Start',
-				accessor: 'start_date',
-			},
-			{
-				Header: 'City',
-				Footer: 'City',
-				accessor: 'city',
-			},
-		],
-	},
-];
+export default COLUMNS;
