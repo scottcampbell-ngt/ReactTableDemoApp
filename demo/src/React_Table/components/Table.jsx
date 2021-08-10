@@ -8,9 +8,9 @@ import {
 	usePagination,
 	useRowSelect,
 } from 'react-table';
-import DATA from '../data.json';
+import DATA from '../../data.json';
 import { COLUMNS, GROUPED_COLS } from '../data/columns';
-import GlobalFilter from '../hooks/GlobalFilter';
+// import GlobalFilter from '../hooks/GlobalFilter';
 import Checkbox from '../hooks/Checkbox';
 import '../style/table.css';
 
@@ -68,7 +68,7 @@ const SelectionTable = () => {
 
 	return (
 		<>
-			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+			{/* <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
 			<table {...getTableProps()}>
 				<thead>
 					{headerGroups.map((hg) => (
