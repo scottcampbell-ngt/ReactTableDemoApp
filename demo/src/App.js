@@ -1,18 +1,11 @@
-import './App.css';
-import BasicTable from './components/BasicTable';
-import SortingTable from './components/SortingTable';
-import FilteringTable from './components/FilteringTable';
-import PaginationTable from './components/PaginationTable';
+import Table from './components/Table';
 
-function App() {
+const App = () => {
 	return (
-		<div className="App">
-			{/* <BasicTable /> */}
-			{/* <SortingTable /> */}
-			{/* <FilteringTable /> */}
-			<PaginationTable />
+		<div>
+			<Table />
 		</div>
 	);
-}
+};
 
 export default App;

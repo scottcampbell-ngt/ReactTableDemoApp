@@ -1,27 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import SelectedRows from './SelectedRows';
 import {
 	useTable,
 	useSortBy,
 	useFilters,
 	useGlobalFilter,
 	usePagination,
+	useRowSelect,
 } from 'react-table';
 import DATA from '../data.json';
-import { COLUMNS, GROUPED_COLS } from './columns';
-import GlobalFilter from './GlobalFilter';
-//import ColumnFilter from './ColumnFilter';
-import './table.css';
+import { COLUMNS, GROUPED_COLS } from '../data/columns';
+import GlobalFilter from '../hooks/GlobalFilter';
+import Checkbox from '../hooks/Checkbox';
+import '../style/table.css';
 
-const PaginatedTable = () => {
+const SelectionTable = () => {
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => DATA, []);
-
-	// const updateColumns = useMemo(
-	// 	() => ({
-	// 		Filter: ColumnFilter,
-	// 	}),
-	// 	[]
-	// );
 
 	const {
 		getTableProps,
@@ -36,21 +31,40 @@ const PaginatedTable = () => {
 		pageOptions,
 		gotoPage,
 		pageCount,
+		setPageSize,
 		setGlobalFilter,
+		selectedFlatRows,
 		state,
 	} = useTable(
 		{
 			columns,
 			data,
-			// updateColumns,
 		},
 		useFilters,
 		useGlobalFilter,
 		useSortBy,
-		usePagination
+		usePagination,
+		useRowSelect,
+		(hooks) => {
+			hooks.visibleColumns.push((columns) => [
+				{
+					id: 'selection',
+					Header: ({ getToggleAllRowsSelectedProps }) => (
+						<Checkbox {...getToggleAllRowsSelectedProps()} />
+					),
+					Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
+				},
+				...columns,
+			]);
+		}
 	);
 
-	const { globalFilter, pageIndex } = state;
+	const { globalFilter, pageIndex, pageSize } = state;
+	const [selectedRows, setSelectedRows] = useState([]);
+
+	useEffect(() => {
+		setSelectedRows([...selectedFlatRows]);
+	}, [selectedFlatRows]);
 
 	return (
 		<>
@@ -121,9 +135,20 @@ const PaginatedTable = () => {
 						}}
 					/>
 				</p>
+				<select
+					value={pageSize}
+					onChange={(e) => setPageSize(Number(e.target.value))}
+				>
+					{[10, 25, 50].map((pageOpt) => (
+						<option key={pageOpt} value={pageOpt}>
+							Display Total: {pageOpt}
+						</option>
+					))}
+				</select>
 			</div>
+			<SelectedRows selectedRows={selectedRows} />
 		</>
 	);
 };
 
-export default PaginatedTable;
+export default SelectionTable;

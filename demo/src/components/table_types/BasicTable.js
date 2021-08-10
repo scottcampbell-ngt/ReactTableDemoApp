@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
-import DATA from '../data.json';
-import { COLUMNS, GROUPED_COLS } from './columns';
+import DATA from '../../data.json';
+import { COLUMNS, GROUPED_COLS } from '../columns';
 import './table.css';
 
 const BasicTable = () => {

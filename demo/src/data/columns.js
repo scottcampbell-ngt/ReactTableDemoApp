@@ -1,5 +1,5 @@
 //import { format } from 'date-fns';
-import ColumnFilter from './ColumnFilter';
+import ColumnFilter from '../hooks/ColumnFilter';
 
 export const COLUMNS = [
 	{
