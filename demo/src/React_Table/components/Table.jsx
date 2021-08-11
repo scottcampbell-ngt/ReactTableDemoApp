@@ -13,7 +13,7 @@ import { COLUMNS, GROUPED_COLS } from "../data/columns";
 import Checkbox from "../hooks/Checkbox";
 import "../style/table.css";
 
-const SelectionTable = () => {
+const Table = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => DATA, []);
 
@@ -150,4 +150,4 @@ const SelectionTable = () => {
   );
 };
 
-export default SelectionTable;
+export default Table;
