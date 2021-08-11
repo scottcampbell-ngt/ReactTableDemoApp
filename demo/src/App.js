@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Table from './React_Table/components/Table';
-import BlueprintTable from './Blueprint/Table';
+import BlueprintTable from './Blueprint/components/Table';
 
 const App = () => {
 	const [renderTable, setRenderTable] = useState(true);
