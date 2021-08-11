@@ -20,7 +20,7 @@ const COLUMNS = [
 		key: 'phone',
 	},
 	{
-		name: 'Start',
+		name: 'Start Date',
 		key: 'start_date',
 	},
 	{

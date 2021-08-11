@@ -36,7 +36,7 @@ export const COLUMNS = [
 		disableFilters: true,
 	},
 	{
-		Header: 'Start',
+		Header: 'Start Date',
 		Footer: 'Start',
 		accessor: 'start_date',
 		Filter: ColumnFilter,

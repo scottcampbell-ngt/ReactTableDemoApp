@@ -5,8 +5,8 @@ import BlueprintTable from './Blueprint/components/Table';
 const App = () => {
 	const [renderTable, setRenderTable] = useState(true);
 	return (
-		<div>
-			<button style={{ background: 'tomato', color: 'whitesmoke' }} onClick={() => setRenderTable(!renderTable)}>Switch Table</button>
+		<div style={{ marginLeft: '25px', marginRight: '25px' }}>
+			<button style={{ background: 'tomato', color: 'whitesmoke' }} onClick={() => setRenderTable(!renderTable)}>Toggle Table</button>
 			{renderTable ? <Table /> : <BlueprintTable />}
 		</div>
 	);
