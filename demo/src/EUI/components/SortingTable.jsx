@@ -26,7 +26,7 @@ const SortingTable = () => {
   const [readonly, setReadonly] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  const [sortField, setSortField] = useState("firstName");
+  const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
 
   const onTableChange = ({ page = {}, sort = {} }) => {

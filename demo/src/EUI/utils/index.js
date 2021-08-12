@@ -2,7 +2,6 @@ import { Comparators } from "./sorting";
 
 export const createDataStore = (data) => {
   return {
-    //countries,
     data,
 
     findUsers: (pageIndex, pageSize, sortField, sortDirection) => {
@@ -49,7 +48,5 @@ export const createDataStore = (data) => {
         data.splice(index, 0, { ...user, id: data.length });
       }
     },
-
-    //getCountry: (code) => countries.find((country) => country.code === code),
   };
 };
