@@ -9,6 +9,7 @@ import "normalize.css/normalize.css";
 import "../style/table.css";
 
 const BlueprintTable = () => {
+  console.log("I am Blueprint");
   const [data, setData] = useState(DATA);
 
   const cellRenderer = (col) => (row) => {

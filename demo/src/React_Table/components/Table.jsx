@@ -14,6 +14,7 @@ import Checkbox from "../hooks/Checkbox";
 import "../style/table.css";
 
 const Table = () => {
+  console.log("i am React-Table");
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => DATA, []);
 
