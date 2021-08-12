@@ -19,7 +19,7 @@ import { COLUMNS } from "../data/columns";
 
 const store = createDataStore(DATA);
 
-const SelectionTable = () => {
+const EUITable = () => {
   console.log("i am EUI Selection Table");
 
   const [allRecords, setAllRecords] = useState(DATA.length);
@@ -120,6 +120,7 @@ const SelectionTable = () => {
 
   return (
     <div>
+      <h3>EUI Table</h3>
       <EuiFlexGroup alignItems="center">
         <EuiFlexItem grow={false}>
           <EuiButton onClick={onSelection}>Select online users</EuiButton>
@@ -145,4 +146,4 @@ const SelectionTable = () => {
   );
 };
 
-export default SelectionTable;
+export default EUITable;

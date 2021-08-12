@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Table from "./React_Table/components/Table";
 import BlueprintTable from "./Blueprint/components/BlueprintTable";
-import SelectionTable from "./EUI/components/SelectionTable";
+import EUITable from "./EUI/components/EUITable";
 
 const App = () => {
   const [renderReactTable, setRenderReactTable] = useState(false);
@@ -48,7 +48,7 @@ const App = () => {
       </button>
       {renderReactTable && <Table />}
       {renderBluePrint && <BlueprintTable />}
-      {renderEUITable && <SelectionTable />}
+      {renderEUITable && <EUITable />}
     </div>
   );
 };
