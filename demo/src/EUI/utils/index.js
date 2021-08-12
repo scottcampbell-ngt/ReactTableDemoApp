@@ -1,30 +1,25 @@
-export const createDataStore = (data) => {
-  //const countries = createCountries();
-  const users = data;
+import { Comparators } from "./sorting";
 
+export const createDataStore = (data) => {
   return {
     //countries,
-    users,
+    data,
 
     findUsers: (pageIndex, pageSize, sortField, sortDirection) => {
       let items;
 
       if (sortField) {
-        // items = users
-        //   .slice(0)
-        //   .sort(
-        //     Comparators.property(sortField, Comparators.default(sortDirection))
-        //   );
-        items = users;
-      } else {
-        items = users;
-      }
+        items = data
+          .slice(0)
+          .sort(
+            Comparators.property(sortField, Comparators.default(sortDirection))
+          );
+      } else items = data;
 
       let pageOfItems;
 
-      if (!pageIndex && !pageSize) {
-        pageOfItems = items;
-      } else {
+      if (!pageIndex && !pageSize) pageOfItems = items;
+      else {
         const startIndex = pageIndex * pageSize;
         pageOfItems = items.slice(
           startIndex,
@@ -40,18 +35,18 @@ export const createDataStore = (data) => {
 
     deleteUsers: (...ids) => {
       ids.forEach((id) => {
-        const index = users.findIndex((user) => user.id === id);
+        const index = data.findIndex((user) => user.id === id);
         if (index >= 0) {
-          users.splice(index, 1);
+          data.splice(index, 1);
         }
       });
     },
 
     cloneUser: (id) => {
-      const index = users.findIndex((user) => user.id === id);
+      const index = data.findIndex((user) => user.id === id);
       if (index >= 0) {
-        const user = users[index];
-        users.splice(index, 0, { ...user, id: users.length });
+        const user = data[index];
+        data.splice(index, 0, { ...user, id: data.length });
       }
     },
 

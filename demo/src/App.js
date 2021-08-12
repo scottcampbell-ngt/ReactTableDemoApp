@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import Table from "./React_Table/components/Table";
 // import BlueprintTable from "./Blueprint/components/BlueprintTable";
-import PaginationTable from "./EUI/components/PaginationTable";
+import SortingTable from "./EUI/components/SortingTable";
 
 const App = () => {
   // const [renderTable, setRenderTable] = useState(true);
@@ -14,7 +14,7 @@ const App = () => {
         Toggle Table
       </button>
       {renderTable ? <Table /> : <BlueprintTable />} */}
-      <PaginationTable />
+      <SortingTable />
     </div>
   );
 };
